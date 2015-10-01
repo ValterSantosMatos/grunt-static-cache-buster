@@ -1,6 +1,6 @@
 # grunt static cache buster
 
-> cache busts static files
+> Cache busts files and updates their references
 
 ## Getting Started
 This plugin requires Grunt.
@@ -17,68 +17,62 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt static cache buster');
 ```
 
-## The "_static_cache_buster" task
+## The "static_cache_buster" task
 
 ### Overview
-In your project's Gruntfile, add a section named `_static_cache_buster` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `static_cache_buster` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  _static_cache_buster: {
+  static_cache_buster: {
+    src: 'tmp/**/**.js',
     options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+        filesToBust: [
+            'tmp/test/fixtures/file-to-bust.html',
+        ],
+    }
   },
 })
 ```
 
 ### Options
 
-#### options.separator
-Type: `String`
-Default value: `',  '`
+#### filesToBust
+Type: `Array`
+Default value: `[]`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+An array containing the files that will be scan to bust the static files.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Basic usage
+In this example, the source files will be hashed by calculating the md5 and appendig it to the name like: 'file-to-hash.js' into 'file-to-hash-79d310bfe9ba9930c28043700467788e.js'. 
 
 ```js
 grunt.initConfig({
-  _static_cache_buster: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+  static_cache_buster: {
+    src: 'file-to-hash.js'
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### With filesToBust Option
+In this example, the sources files will be hashed and the files to bust scanned to bust the previous hashed files. 
+```html
+    <!-- Turn this -->
+    <script type="text/javascript" src="/file-to-hash.js"></script>
+    <!-- Into this -->
+    <script type="text/javascript" src="/file-to-hash-79d310bfe9ba9930c28043700467788e.js"></script>
+```
 
 ```js
 grunt.initConfig({
-  _static_cache_buster: {
+  static_cache_buster: {
+    src: '**/*.js',
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+        filesToBust: [
+            '**/*.html',
+        ],
+    }
 })
 ```
 
@@ -86,7 +80,11 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+**v0.0.1** - 2015-10-01
+* Publish the busting task.
 
 ## License
 Copyright (c) 2015 valter santos matos. Licensed under the MIT license.
+
+## Credits
+This plugin was inspired by [grunt-cache-busting](https://github.com/PaulTondeur/grunt-cache-busting)
