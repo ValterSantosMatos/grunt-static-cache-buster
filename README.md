@@ -1,4 +1,4 @@
-# grunt static cache buster
+# grunt-static-cache-buster
 
 > Cache busts files and updates their references
 
@@ -8,13 +8,13 @@ This plugin requires Grunt.
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt static cache buster --save-dev
+npm install grunt-static-cache-buster --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt static cache buster');
+grunt.loadNpmTasks('grunt-static-cache-buster');
 ```
 
 ## The "static_cache_buster" task
