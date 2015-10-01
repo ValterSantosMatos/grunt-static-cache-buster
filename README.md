@@ -1,6 +1,6 @@
 # grunt-static-cache-buster
 
-> Cache busts files and updates their references
+> Cache busts static files and updates their references
 
 ## Getting Started
 This plugin requires Grunt.
@@ -27,7 +27,7 @@ grunt.initConfig({
   static_cache_buster: {
     src: 'tmp/**/**.js',
     options: {
-        filesToBust: [
+        filesToUpdateReferences: [
             'tmp/test/fixtures/file-to-bust.html',
         ],
     }
@@ -37,39 +37,39 @@ grunt.initConfig({
 
 ### Options
 
-#### filesToBust
+#### filesToUpdateReferences
 Type: `Array`
 Default value: `[]`
 
-An array containing the files that will be scan to bust the static files.
+An array containing the files whose references will be updated.
+```html
+    <!-- Turn this -->
+    <script type="text/javascript" src="/file-to-bust.js"></script>
+    <!-- Into this -->
+    <script type="text/javascript" src="/file-to-bust-79d310bfe9ba9930c28043700467788e.js"></script>
+```
 
 ### Usage Examples
 
 #### Basic usage
-In this example, the source files will be hashed by calculating the md5 and appendig it to the name like: 'file-to-hash.js' into 'file-to-hash-79d310bfe9ba9930c28043700467788e.js'. 
+In this example, the source files will be busted by calculating the md5 and appendig it to the name like: 'file-to-bust.js' into 'file-to-bust-79d310bfe9ba9930c28043700467788e.js'. 
 
 ```js
 grunt.initConfig({
   static_cache_buster: {
-    src: 'file-to-hash.js'
+    src: 'file-to-bust.js'
 })
 ```
 
-#### With filesToBust Option
-In this example, the sources files will be hashed and the files to bust scanned to bust the previous hashed files. 
-```html
-    <!-- Turn this -->
-    <script type="text/javascript" src="/file-to-hash.js"></script>
-    <!-- Into this -->
-    <script type="text/javascript" src="/file-to-hash-79d310bfe9ba9930c28043700467788e.js"></script>
-```
+#### With filesToUpdateReferences Option
+In this example, the sources files will be busted and the refences will be updated.
 
 ```js
 grunt.initConfig({
   static_cache_buster: {
     src: '**/*.js',
     options: {
-        filesToBust: [
+        filesToUpdateReferences: [
             '**/*.html',
         ],
     }

@@ -49,8 +49,8 @@ module.exports = function (grunt) {
             test: {
                 src: 'tmp/**/**.js',
                 options: {
-                    filesToBust: [
-                        'tmp/test/fixtures/file-to-bust.html',
+                    filesToUpdateReferences: [
+                        'tmp/test/fixtures/file-to-update-reference.html',
                     ],
                 }
             }
