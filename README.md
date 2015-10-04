@@ -81,7 +81,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 **v0.0.11** - 2015-10-04
-* Reviewd the regex to update the files references.
+* Reviewed the regex to update the files references.
 
 **v0.0.1** - 2015-10-01
 * Publish the busting task.
