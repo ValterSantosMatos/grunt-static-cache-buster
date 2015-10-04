@@ -3,10 +3,6 @@
 var grunt = require('grunt');
 
 exports._static_cache_buster = {
-  setUp: function (done) {
-    // setup here if necessary
-    done();
-  },
   default_options: function (test) {
     test.expect(3);
 

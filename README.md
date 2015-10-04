@@ -44,9 +44,9 @@ Default value: `[]`
 An array containing the files whose references will be updated.
 ```html
     <!-- Turn this -->
-    <script type="text/javascript" src="/file-to-bust.js"></script>
+    <script type="text/javascript" src="file-to-bust.js"></script>
     <!-- Into this -->
-    <script type="text/javascript" src="/file-to-bust-79d310bfe9ba9930c28043700467788e.js"></script>
+    <script type="text/javascript" src="file-to-bust-79d310bfe9ba9930c28043700467788e.js"></script>
 ```
 
 ### Usage Examples
@@ -80,6 +80,9 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+**v0.0.11** - 2015-10-04
+* Reviewd the regex to update the files references.
+
 **v0.0.1** - 2015-10-01
 * Publish the busting task.
 
