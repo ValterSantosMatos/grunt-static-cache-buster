@@ -68,10 +68,10 @@ module.exports = function (grunt) {
                     // Regex: '|' is a OR, '\S' one or more non-whitespace characters, '{33}' string length is 33
                     // which is the length of the md5 hash length plus the dash in the name, the 'g' flag replaces 
                     // all occurences.
-                    var regex = RegExp('/' + bustedFile.fileNameWithoutHash + '(|(\\S{33}))' + bustedFile.extension,
+                    var regex = RegExp(bustedFile.fileNameWithoutHash + '(|(\\S{33}))' + bustedFile.extension,
                         'g');
                     if (regex.test(content)) {
-                        content = content.replace(regex, '/' + bustedFile.fileNameWithHash);
+                        content = content.replace(regex, bustedFile.fileNameWithHash);
                         hasToReWriteFile = true;
                     }
                 });
@@ -79,7 +79,7 @@ module.exports = function (grunt) {
                 if (hasToReWriteFile) {
                     // Rewrites the hash file.
                     fs.writeFileSync(file, content, 'utf-8');
-                    grunt.log.writeln('Busting "' + file + ' file.');
+                    grunt.log.writeln('Updating "' + file + ' file.');
                 }
             });
         };
