@@ -1,34 +1,31 @@
 {
-    "name": "grunt-static-cache-buster",
-    "version": "0.0.2",
-    "description": "Cache busts static files and updates their references",
-    "repository": "https://github.com/ValterSantosMatos/grunt-static-cache-buster",
-    "author": {
-        "name": "valter santos matos",
-        "email": "valter.santos.matos@gmail.com",
-        "url": ""
-    },
-    "keywords": [
-        "gruntplugin"
-    ],
-    "main": "Gruntfile.js",
-    "engines": {
-        "node": ">= 0.8.0"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "grunt": "~0.4.2",
-        "grunt-contrib-clean": "~0.5.0",
-        "grunt-contrib-copy": "^0.8.1",
-        "grunt-contrib-jshint": "~0.8.0",
-        "grunt-contrib-nodeunit": "~0.3.0",
-        "jshint-stylish": "~0.1.5",
-        "load-grunt-tasks": "~0.3.0"
-    },
-    "keywords": [
-        "grunt",
-        "cache",
-        "buster",
-        "busting"
-    ]
+  "name": "grunt-static-cache-buster",
+  "version": "0.1.0",
+  "description": "Cache busts static files and updates their references",
+  "repository": "https://github.com/ValterSantosMatos/grunt-static-cache-buster",
+  "author": {
+    "name": "valter santos matos",
+    "email": "valter.santos.matos@gmail.com",
+    "url": ""
+  },
+  "keywords": [
+    "grunt",
+    "cache",
+    "buster",
+    "busting"
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-nodeunit": "~0.3.0",
+    "jshint-stylish": "~0.1.5",
+    "load-grunt-tasks": "~0.3.0"
+  }
 }
