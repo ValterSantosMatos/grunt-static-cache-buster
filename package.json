@@ -1,6 +1,6 @@
 {
   "name": "grunt-static-cache-buster",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Cache busts static files and updates their references",
   "repository": "https://github.com/ValterSantosMatos/grunt-static-cache-buster",
   "author": {
