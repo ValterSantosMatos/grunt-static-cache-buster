@@ -34,8 +34,13 @@ module.exports = function (grunt) {
             if (file.indexOf(hash) === -1) {
                 // File name is missing its hash.
                 fileNameWithoutHash = path.basename(file, extension);
-                fileNameWithHash = path.basename(file).replace(extension, '-' + hash + extension);
-                var filePathWithHash = file.replace(extension, '-' + hash + extension);
+                
+                // Position is always bigger than 0 since the extendion must exist in a file name.
+                var position = path.basename(file).lastIndexOf(extension);
+                fileNameWithHash = path.basename(file).substring(0, position) + '-' + hash + extension;
+
+                position = file.lastIndexOf(extension);
+                var filePathWithHash = file.substring(0, position) + '-' + hash + extension;
                 
                 // Renames the file.
                 fs.rename(file, filePathWithHash);
@@ -64,12 +69,12 @@ module.exports = function (grunt) {
                 var hasToReWriteFile = false;
 
                 bustedFiles.forEach(function (bustedFile) {
-                    // Cycle the hashed files and replaces the old file names with the new ones.
-                    // Regex: '|' is a OR, '\S' one or more non-whitespace characters, '{33}' string length is 33
-                    // which is the length of the md5 hash length plus the dash in the name, the 'g' flag replaces 
-                    // all occurences.
-                    var regex = RegExp(bustedFile.fileNameWithoutHash + '(|(\\S{33}))' + bustedFile.extension,
-                        'g');
+                    // Escapes the regex strings so it does not treat any of its characters as special characters.
+                    // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+                    var escapedFileName = bustedFile.fileNameWithoutHash.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                    var escapeFileExtension = bustedFile.extension.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                    var regex = RegExp(escapedFileName + '(|(\\S{33}))' + escapeFileExtension, 'g');
+
                     if (regex.test(content)) {
                         content = content.replace(regex, bustedFile.fileNameWithHash);
                         hasToReWriteFile = true;
